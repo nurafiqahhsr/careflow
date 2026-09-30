@@ -1,23 +1,29 @@
+import Link from "next/link";
+
 const services = [
   {
+    slug: "general-care",
     name: "General Care",
     category: "Primary Care",
     description:
       "Convenient access to consultations for common health concerns and everyday healthcare needs.",
   },
   {
+    slug: "womens-health",
     name: "Women's Health",
     category: "Specialised Care",
     description:
       "Healthcare services designed around women's health and individual care needs.",
   },
   {
+    slug: "skin-dermatology",
     name: "Skin & Dermatology",
     category: "Dermatology",
     description:
       "Explore digital care options for common skin and dermatological concerns.",
   },
   {
+    slug: "mens-health",
     name: "Men's Health",
     category: "Specialised Care",
     description:
@@ -51,7 +57,7 @@ export default function ServicesPage() {
         <div className="grid gap-6 md:grid-cols-2">
           {services.map((service) => (
             <article
-              key={service.name}
+              key={service.slug}
               className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
             >
               <span className="inline-flex rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">
@@ -66,9 +72,12 @@ export default function ServicesPage() {
                 {service.description}
               </p>
 
-              <button className="mt-7 rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700">
+              <Link
+                href={`/services/${service.slug}`}
+                className="mt-7 inline-flex rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700"
+              >
                 View service
-              </button>
+              </Link>
             </article>
           ))}
         </div>
